@@ -1,26 +1,41 @@
 import Link from "next/link";
+import Layout from "../components/Layout";
 
 export default function Home({ chefs }) {
   return (
-    <div>
-      <h1>Overcooked Hall of Fame</h1>
-      <ul>
-        {chefs.map((chef) => (
-          <li>
-            <Link href={`/chefs/${chef}`}>
-              <a>{chef}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Layout>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {chefs.map((chef) => (
+            <tr>
+              <td>
+                <Link href={`/chefs/${chef.name}`}>
+                  <a>{chef.name}</a>
+                </Link>
+              </td>
+              <td>{chef.points}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <ul></ul>
+    </Layout>
   );
 }
 
 export async function getStaticProps() {
   return {
     props: {
-      chefs: ["mauro", "eze"],
+      chefs: [
+        { name: "mauro", points: 1000 },
+        { name: "eze", points: 1000 },
+      ],
     },
   };
 }

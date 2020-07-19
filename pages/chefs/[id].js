@@ -1,8 +1,10 @@
+import Layout from "../../components/Layout";
+
 export default function Chef({ id }) {
   return (
-    <div>
+    <Layout>
       <h1>Chef: {id}</h1>
-    </div>
+    </Layout>
   );
 }
 
